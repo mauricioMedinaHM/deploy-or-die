@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Deploy or Die: sobreviví a tu primer día en tecnología.">
+  <title>Deploy or Die</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Deploy or Die, inicio">
+      <span class="brand-mark">D<span>Ø</span>D</span>
+      <span class="brand-name">DEPLOY OR DIE</span>
+    </a>
+    <div class="status"><span class="status-dot"></span> SERVIDORES ONLINE</div>
+  </header>
+
+  <main>
+    <section id="intro" class="screen active" aria-labelledby="intro-title">
+      <div class="hero-copy">
+        <p class="eyebrow">// SIMULADOR DE SUPERVIVENCIA CORPORATIVA</p>
+        <h1 id="intro-title">TU PRIMER DÍA.<br><span>TODO ESTÁ ROTO.</span></h1>
+        <p class="lede">Tomá decisiones rápidas, manejá el caos y tratá de no romper producción. No necesitás saber programar. Sólo mantener la calma.</p>
+        <button id="start-btn" class="primary-btn">INICIAR TURNO <span>→</span></button>
+        <p class="tiny">2 ESCENARIOS · 3 DECISIONES · 1 TRABAJO EN RIESGO</p>
+      </div>
+
+      <div class="office-art" aria-label="Oficina pixel art con problemas técnicos">
+        <div class="window"><i></i><i></i><i></i><i></i></div>
+        <div class="plant"><b></b><b></b><b></b><span></span></div>
+        <div class="desk">
+          <div class="monitor">
+            <div class="code-line w1"></div><div class="code-line w2"></div><div class="code-line w3 red"></div><div class="code-line w2"></div>
+            <div class="error-pop">ERROR!</div>
+          </div>
+          <div class="keyboard"></div>
+          <div class="mug">!</div>
+        </div>
+        <div class="character"><div class="head"><span></span></div><div class="body"></div><div class="chair"></div></div>
+        <div class="alarm">!</div>
+        <div class="floor"></div>
+      </div>
+    </section>
+
+    <section id="select" class="screen" aria-labelledby="select-title">
+      <div class="section-head">
+        <p class="eyebrow">// ELEGÍ TU DESASTRE</p>
+        <h2 id="select-title">¿QUÉ TURNO QUERÉS SOBREVIVIR?</h2>
+        <p>Cada escenario es una historia independiente con decisiones y ayuda simulada.</p>
+      </div>
+      <div class="scenario-grid">
+        <button class="scenario-card" data-scenario="friday">
+          <span class="card-number">01</span>
+          <div class="card-icon red-bg">🔥</div>
+          <div><span class="difficulty">DIFICULTAD: CAOS</span><h3>FRIDAY DEPLOY</h3><p>Viernes, 17:59. El checkout dejó de funcionar y todo el equipo ya está saliendo.</p></div>
+          <span class="play">JUGAR <b>→</b></span>
+        </button>
+        <button class="scenario-card" data-scenario="ai">
+          <span class="card-number">02</span>
+          <div class="card-icon yellow-bg">🤖</div>
+          <div><span class="difficulty">DIFICULTAD: IMPREDECIBLE</span><h3>THE AI INTERN</h3><p>El nuevo agente de IA está cambiando archivos sin supervisión. Ya tocó producción.</p></div>
+          <span class="play">JUGAR <b>→</b></span>
+        </button>
+      </div>
+    </section>
+
+    <section id="game" class="screen" aria-labelledby="incident-title">
+      <div class="game-top">
+        <button id="exit-btn" class="text-btn">← SALIR</button>
+        <div class="game-meta"><span id="level-label">NIVEL 01</span><b>DEPLOY OR DIE</b></div>
+        <div id="timer" class="timer">01:30</div>
+      </div>
+      <div class="meters">
+        <div><span>ESTRÉS</span><div class="meter"><i id="stress-bar"></i></div><b id="stress-value">20%</b></div>
+        <div><span>REPUTACIÓN</span><div class="meter rep"><i id="rep-bar"></i></div><b id="rep-value">50%</b></div>
+      </div>
+
+      <div class="game-layout">
+        <article class="incident-panel">
+          <div class="incident-label"><span></span> INCIDENTE ACTIVO</div>
+          <p id="step-label" class="step-label">DECISIÓN 1 DE 3</p>
+          <div id="incident-icon" class="incident-icon">🔥</div>
+          <h2 id="incident-title">PRODUCCIÓN ESTÁ CAÍDA</h2>
+          <p id="incident-copy"></p>
+          <div id="boss-message" class="boss-message"><span>JEFE</span><p></p></div>
+          <div id="choices" class="choices"></div>
+        </article>
+
+        <aside class="assistant-panel">
+          <div class="assistant-head"><div class="bot-avatar">AI</div><div><b>COPILOTO DE CRISIS</b><span><i></i> SIMULACIÓN ACTIVA</span></div></div>
+          <div id="assistant-empty" class="assistant-empty"><div>?</div><p>¿No sabés qué hacer?</p><span>Pedí una recomendación. En la versión final, esta respuesta vendría de ChatGPT.</span></div>
+          <div id="assistant-answer" class="assistant-answer" hidden>
+            <p class="typing-label">ANALIZANDO INCIDENTE...</p>
+            <div class="answer-content"></div>
+          </div>
+          <button id="help-btn" class="help-btn"><span>✦</span> PEDIR AYUDA A LA IA</button>
+          <p class="simulated-note">RESPUESTA 100% SIMULADA · SIN API</p>
+        </aside>
+      </div>
+    </section>
+
+    <section id="result" class="screen" aria-labelledby="result-title">
+      <div class="result-card">
+        <p class="eyebrow">// INFORME DE INCIDENTE</p>
+        <div id="result-stamp" class="result-stamp">SOBREVIVISTE</div>
+        <h2 id="result-title">SEGUÍS CONTRATADO.</h2>
+        <p id="result-copy"></p>
+        <div class="result-stats">
+          <div><span>DECISIONES</span><b id="score-decisions">3/3</b></div>
+          <div><span>ESTRÉS FINAL</span><b id="score-stress">42%</b></div>
+          <div><span>AYUDAS IA</span><b id="score-help">1</b></div>
+        </div>
+        <div class="rank"><span>TU RANGO</span><strong id="rank-name">JUNIOR PROMETEDOR</strong></div>
+        <div class="result-actions"><button id="replay-btn" class="primary-btn">JUGAR OTRO ESCENARIO</button><button id="copy-btn" class="secondary-btn">COPIAR RESULTADO</button></div>
+      </div>
+    </section>
+  </main>
+
+  <footer><span>DEPLOY OR DIE © 2026</span><span>HECHO CON CAFÉ, PÁNICO Y CÓDIGO</span></footer>
+  <div id="toast" role="status">RESULTADO COPIADO ✓</div>
+  <script src="app.js"></script>
+</body>
+</html>
